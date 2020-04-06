@@ -18,7 +18,7 @@ router.post('/', [
         })
     ],
     (req, res) => {
-        const errors = validationResult(req);
+        const errors = validResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array()

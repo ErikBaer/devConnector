@@ -11,15 +11,15 @@ const {
 router.post('/', [
         check('name', 'Please enter your name!')
         .not()
-        .isEmpty(),
-        check('email', 'Please include a valid email').isEmail(),
+        .isEmpty()
+        check('email', 'Please include a valid email').isEmail()
         check('password', 'Please enter a password with min 6 characters').isLength({
             min: 6
         })
     ],
     (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
+        const errors = validResult(req);
+        if (!errors.isEmtpy()) {
             return res.status(400).json({
                 errors: errors.array()
             })

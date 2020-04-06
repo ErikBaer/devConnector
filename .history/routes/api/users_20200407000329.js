@@ -18,8 +18,8 @@ router.post('/', [
         })
     ],
     (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
+        const errors = validResult(req);
+        if (!errors.isEmtpy()) {
             return res.status(400).json({
                 errors: errors.array()
             })
