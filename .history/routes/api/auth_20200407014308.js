@@ -58,31 +58,22 @@ router.post(
             if (!user) {
                 return res.status(400).json({
                     errors: [{
-                        msg: 'Invalid Credentials'
+                        msg: 'User not found'
                     }]
                 });
             }
 
             //Check Password
 
-            const isMatch = await bcrypt.compare(password, user.password);
+            const isMatch =
 
-            if (!isMatch) {
-                return res.status(400).json({
-                    errors: [{
-                        msg: 'Invalid Credentials'
-                    }]
-                });
-            }
+                // Return jsonwebtoken
 
-
-            // Return jsonwebtoken
-
-            const payload = {
-                user: {
-                    id: user.id,
-                },
-            };
+                const payload = {
+                    user: {
+                        id: user.id,
+                    },
+                };
 
             jwt.sign(
                 payload,

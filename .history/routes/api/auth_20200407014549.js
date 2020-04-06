@@ -75,7 +75,6 @@ router.post(
                 });
             }
 
-
             // Return jsonwebtoken
 
             const payload = {

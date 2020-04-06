@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const user = require('../../models/User');
-const bcrypt = require('bcryptjs')
 const {
     check,
     validationResult
@@ -58,23 +57,30 @@ router.post(
             if (!user) {
                 return res.status(400).json({
                     errors: [{
-                        msg: 'Invalid Credentials'
+                        msg: 'User not found'
                     }]
                 });
             }
 
-            //Check Password
 
-            const isMatch = await bcrypt.compare(password, user.password);
+            // Create Instance of User
 
-            if (!isMatch) {
-                return res.status(400).json({
-                    errors: [{
-                        msg: 'Invalid Credentials'
-                    }]
-                });
-            }
+            user = new User({
+                name,
+                email,
+                avatar,
+                password,
+            });
 
+            //Encrypt password
+
+            const salt = await bcrypt.genSalt(10);
+
+            user.password = await bcrypt.hash(password, salt);
+
+            // Save User
+
+            await user.save();
 
             // Return jsonwebtoken
 
