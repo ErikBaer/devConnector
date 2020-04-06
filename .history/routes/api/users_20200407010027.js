@@ -91,14 +91,10 @@ router.post(
       };
 
       jwt.sign(
-        payload,
-        config.get('jwtSecret'),
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+          payload, 
+          config.get('jwtToken')
+          {expiresIn: 3600}
+          );
 
       console.log(req.body);
     } catch (err) {
