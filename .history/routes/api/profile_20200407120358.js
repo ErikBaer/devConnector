@@ -85,39 +85,8 @@ router.post('/', [auth, [
             githubusername
         };
 
-        const socialfields = {
-            youtube,
-            twitter,
-            instagram,
-            linkedin,
-            facebook
-        };
-
-        for (const [key, value] of Object.entries(socialfields)) {
-            if (value.length > 0)
-                socialfields[key] = normalize(value, {
-                    forceHttps: true
-                });
-        }
-        profileFields.social = socialfields;
-
-        console.log(profileFields);
-
-        try {
-            // Using upsert option (creates new doc if no match is found):
-            let profile = await Profile.findOneAndUpdate({
-                user: req.user.id
-            }, {
-                $set: profileFields
-            }, {
-                new: true,
-                upsert: true
-            });
-            res.json(profile);
-        } catch (err) {
-            console.error(err.message);
-            res.status(500).send('Server Error');
-        }
+        console.log(skills);
+        res.send('Hello')
 
     })
 

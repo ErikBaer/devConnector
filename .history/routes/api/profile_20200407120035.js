@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../../middleware/auth');
-const normalize = require('normalize-url');
+const auth = require('../../middleware/auth')
 const {
     check,
     validationResult
@@ -71,53 +70,9 @@ router.post('/', [auth, [
 
         //Build profile object
 
-        const profileFields = {
-            user: req.user.id,
-            company,
-            location,
-            website: website === '' ? '' : normalize(website, {
-                forceHttps: true
-            }),
-            bio,
-            skills: Array.isArray(skills) ?
-                skills : skills.split(',').map(skill => ' ' + skill.trim()),
-            status,
-            githubusername
-        };
-
-        const socialfields = {
-            youtube,
-            twitter,
-            instagram,
-            linkedin,
-            facebook
-        };
-
-        for (const [key, value] of Object.entries(socialfields)) {
-            if (value.length > 0)
-                socialfields[key] = normalize(value, {
-                    forceHttps: true
-                });
-        }
-        profileFields.social = socialfields;
-
-        console.log(profileFields);
-
-        try {
-            // Using upsert option (creates new doc if no match is found):
-            let profile = await Profile.findOneAndUpdate({
-                user: req.user.id
-            }, {
-                $set: profileFields
-            }, {
-                new: true,
-                upsert: true
-            });
-            res.json(profile);
-        } catch (err) {
-            console.error(err.message);
-            res.status(500).send('Server Error');
-        }
+        const profileFields = {};
+        profileFields.user = req.user.id;
+        if (company) profi
 
     })
 
