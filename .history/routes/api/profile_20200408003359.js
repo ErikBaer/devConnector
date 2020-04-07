@@ -206,7 +206,7 @@ router.put('/experience', [auth,
             .isEmpty()
         ],
         [
-            check('company', 'Company name is required')
+            check('Company', 'Company name is required')
             .not()
             .isEmpty()
         ],
@@ -222,41 +222,6 @@ router.put('/experience', [auth,
             return res.status(400).json({
                 errors: errors.array()
             })
-        }
-
-        const {
-            title,
-            company,
-            location,
-            from,
-            to,
-            current,
-            description
-        } = req.body;
-
-        const newExp = {
-            title,
-            company,
-            location,
-            from,
-            to,
-            current,
-            description
-        }
-
-        try {
-            const profile = await Profile.findOne({
-                user: req.user.id
-            });
-
-            profile.experience.unshift(newExp);
-
-            await profile.save();
-
-            res.json(profile);
-        } catch (err) {
-            console.err(err.message)
-            res.status(500).send('Server Error');
         }
     })
 

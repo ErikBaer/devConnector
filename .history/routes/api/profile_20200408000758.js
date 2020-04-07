@@ -74,12 +74,14 @@ router.post(
             company,
             location,
             website: website === '' ?
-                '' : normalize(website, {
+                '' :
+                normalize(website, {
                     forceHttps: true,
                 }),
             bio,
             skills: Array.isArray(skills) ?
-                skills : skills.split(',').map((skill) => ' ' + skill.trim()),
+                skills :
+                skills.split(',').map((skill) => ' ' + skill.trim()),
             status,
             githubusername,
         };
@@ -112,7 +114,7 @@ router.post(
                 new: true,
                 upsert: true,
             });
-            res.json('Profile created / updated');
+            res.json(profile);
             console.log('Profile created / updated')
         } catch (err) {
             console.error(err.message);
@@ -165,24 +167,23 @@ router.get('/user/:user_id', async (req, res) => {
 
 //@route    Delete api/profile/
 //@desc     Delete profile, user and post
-//@access   Private
+//@access   Public
 
-router.delete('/', auth, async (req, res) => {
+router.delete('/', async (req, res) => {
     try {
         //Remove profile
         //TODO: Remove Users Posts
         await Profile.findOneAndRemove({
-            user: req.user.id
+            user: req.params.user_id,
         });
         //Remove the User
         await User.findOneAndRemove({
-            _id: req.user.id
-        })
+            _id: req.params.user_id,
+        });
 
         res.json({
             msg: 'User Information deleted'
         });
-        console.log('User Information deleted');
     } catch (err) {
         console.log(err.name);
         if (err.name == 'CastError') {
@@ -194,70 +195,5 @@ router.delete('/', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-
-//@route    Put api/profile/experience
-//@desc     Add profile experience
-//@access   Private
-
-router.put('/experience', [auth,
-        [
-            check('title', 'Title is required')
-            .not()
-            .isEmpty()
-        ],
-        [
-            check('company', 'Company name is required')
-            .not()
-            .isEmpty()
-        ],
-        [
-            check('from', 'fromDate is required')
-            .not()
-            .isEmpty()
-        ]
-    ],
-    async (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array()
-            })
-        }
-
-        const {
-            title,
-            company,
-            location,
-            from,
-            to,
-            current,
-            description
-        } = req.body;
-
-        const newExp = {
-            title,
-            company,
-            location,
-            from,
-            to,
-            current,
-            description
-        }
-
-        try {
-            const profile = await Profile.findOne({
-                user: req.user.id
-            });
-
-            profile.experience.unshift(newExp);
-
-            await profile.save();
-
-            res.json(profile);
-        } catch (err) {
-            console.err(err.message)
-            res.status(500).send('Server Error');
-        }
-    })
 
 module.exports = router;

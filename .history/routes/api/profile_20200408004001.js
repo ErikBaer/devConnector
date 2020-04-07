@@ -206,7 +206,7 @@ router.put('/experience', [auth,
             .isEmpty()
         ],
         [
-            check('company', 'Company name is required')
+            check('Company', 'Company name is required')
             .not()
             .isEmpty()
         ],
@@ -251,9 +251,7 @@ router.put('/experience', [auth,
 
             profile.experience.unshift(newExp);
 
-            await profile.save();
-
-            res.json(profile);
+            await profile.save()
         } catch (err) {
             console.err(err.message)
             res.status(500).send('Server Error');

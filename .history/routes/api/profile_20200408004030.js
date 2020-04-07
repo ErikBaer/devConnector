@@ -206,7 +206,7 @@ router.put('/experience', [auth,
             .isEmpty()
         ],
         [
-            check('company', 'Company name is required')
+            check('Company', 'Company name is required')
             .not()
             .isEmpty()
         ],
