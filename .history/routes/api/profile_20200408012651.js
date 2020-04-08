@@ -316,7 +316,7 @@ router.put('/education', [
         const {
             school,
             degree,
-            fieldofstudy,
+            fieldofStudy,
             from,
             to,
             current,
@@ -326,7 +326,7 @@ router.put('/education', [
         const newEdu = {
             school,
             degree,
-            fieldofstudy,
+            fieldofStudy,
             from,
             to,
             current,

@@ -285,8 +285,7 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
 //@desc     Add profile education
 //@access   Private
 
-router.put('/education', [
-        auth,
+router.put('/education', [auth,
         [
             check('school', 'School is required')
             .not()
@@ -296,9 +295,9 @@ router.put('/education', [
             .not()
             .isEmpty(),
 
-            // check('fieldofstudy', 'Field of study is required')
-            // .not()
-            // .isEmpty(),
+            check('fieldofStudy', 'Field of study is required')
+            .not()
+            .isEmpty(),
 
             check('from', 'fromDate is required')
             .not()
@@ -316,7 +315,7 @@ router.put('/education', [
         const {
             school,
             degree,
-            fieldofstudy,
+            fieldofStudy,
             from,
             to,
             current,
@@ -326,7 +325,7 @@ router.put('/education', [
         const newEdu = {
             school,
             degree,
-            fieldofstudy,
+            fieldofStudy,
             from,
             to,
             current,
