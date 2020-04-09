@@ -11,13 +11,7 @@ const Register = () => {
     const { name, email, password, password2 } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-    const onSubmit = e => {
-        e.preventDefault();
-        if (password !== password2) { console.log('Passwords do not match') }
-        else {
-            console.log(formData)
-        }
-    }
+    const onSubmit = e => 
 
     return (
         <Fragment>
@@ -57,6 +51,6 @@ const Register = () => {
             </p>
         </Fragment>
     )
-}
+    }
 
-export default Register
+    export default Register
