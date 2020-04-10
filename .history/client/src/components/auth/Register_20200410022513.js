@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react'
 
 const Register = () => {
     const [formData, setFormData] = useState({

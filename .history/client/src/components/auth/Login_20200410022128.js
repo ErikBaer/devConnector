@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react'
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -23,6 +22,8 @@ const Login = () => {
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
+                    <small className="form-text">This site uses Gravatar so if you want a profile image, use a
+            Gravatar email</small>
                 </div>
                 <div className="form-group">
                     <input
@@ -37,7 +38,7 @@ const Login = () => {
                 <input type="submit" className="btn btn-primary" value="Login" />
             </form>
             <p className="my-1">
-                Don`t have an account yet? <Link to="/register">Sign Up</Link>
+                Already have an account? <a href="login.html">Sign In</a>
             </p>
         </Fragment>
     )
