@@ -2,14 +2,13 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
+import { register } from '../../actions/register';
 import PropTypes from 'prop-types';
 
 
 //setAlert gets provided to props from connect and then destructured ;
 
-const Register = ({ setAlert, register }) => {
-
+const Register = ({ setAlert }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -27,7 +26,7 @@ const Register = ({ setAlert, register }) => {
             setAlert('Passwords do not match', 'danger');
         }
         else {
-            register({ name, email, password })
+            console.log('success')
         }
     }
 
@@ -37,10 +36,10 @@ const Register = ({ setAlert, register }) => {
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
-                    <input type="text" placeholder="Name" name="name" value={name} onChange={e => onChange(e)} />
+                    <input type="text" placeholder="Name" name="name" value={name} onChange={e => onChange(e)} required />
                 </div>
                 <div className="form-group">
-                    <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} />
+                    <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
                     <small className="form-text">This site uses Gravatar so if you want a profile image, use a
             Gravatar email</small>
                 </div>
@@ -73,7 +72,6 @@ const Register = ({ setAlert, register }) => {
 
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired
 }
 
-export default connect(null, { setAlert, register })(Register);
+export default connect(null, { setAlert })(Register);
