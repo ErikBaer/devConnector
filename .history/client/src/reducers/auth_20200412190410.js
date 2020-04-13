@@ -31,13 +31,12 @@ export default function (state = initialState, action) {
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
-        case LOGOUT:
+        case LOGOUT
             return {
                 ...state,
                 token: null,
                 isAuthenticated: false,
-                loading: false,
-                user: null
+                loading: false
             }
 
 
