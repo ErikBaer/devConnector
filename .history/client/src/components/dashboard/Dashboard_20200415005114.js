@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profile';
+import { getCurrentProfile } from '../../actions/profile'
 
 
 
-
-const Dashboard = ({ getCurrentProfile, auth, profile }) => {
-    useEffect(() => {
-        getCurrentProfile();
-    }, [getCurrentProfile]);
+const Dashboard = props => {
     return (
         <div>
             Dashboard
@@ -28,4 +24,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
+export default connect(mapStateToProps, getCurrentProfile)(Dashboard)

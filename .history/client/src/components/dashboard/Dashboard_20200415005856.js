@@ -9,7 +9,7 @@ import { getCurrentProfile } from '../../actions/profile';
 const Dashboard = ({ getCurrentProfile, auth, profile }) => {
     useEffect(() => {
         getCurrentProfile();
-    }, [getCurrentProfile]);
+    }, []);
     return (
         <div>
             Dashboard
@@ -28,4 +28,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
+export default connect(mapStateToProps, getCurrentProfile())(Dashboard)
