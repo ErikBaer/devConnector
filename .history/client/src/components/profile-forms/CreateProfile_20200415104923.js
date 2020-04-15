@@ -70,7 +70,7 @@ const CreateProfile = props => {
                     >Could be your own company or one you work for</small>
                 </div>
                 <div class="form-group">
-                    <input type="text" placeholder="Website" name="website" value={website} onChange={e => onChange(e)} />
+                    <input type="text" placeholder="Website" name="website" value={name} onChange={e => onChange(e)} />
                     <small class="form-text"
                     >Could be your own or a company website</small>
                 </div>
@@ -139,8 +139,8 @@ const CreateProfile = props => {
 
                 <input type="submit" class="btn btn-primary my-1" />
                 <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
-            </form>
-        </Fragment>
+            </form >
+        </Fragment >
     )
 }
 

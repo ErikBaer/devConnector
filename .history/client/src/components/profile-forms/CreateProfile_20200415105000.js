@@ -139,8 +139,8 @@ const CreateProfile = props => {
 
                 <input type="submit" class="btn btn-primary my-1" />
                 <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
-            </form>
-        </Fragment>
+            </form >
+        </Fragment >
     )
 }
 
