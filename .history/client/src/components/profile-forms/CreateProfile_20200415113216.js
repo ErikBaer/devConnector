@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
 
-const CreateProfile = ({ createProfile, history }) => {
+const CreateProfile = ({ createProfile }) => {
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -43,7 +43,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        createProfile(formData, history)
+        createProfile()
     }
 
     return (
@@ -56,7 +56,7 @@ const CreateProfile = ({ createProfile, history }) => {
         profile stand out
       </p>
             <small>* = required field</small>
-            <form class="form" onSubmit={(e => onSubmit(e))}>
+            <form class="form">
                 <div class="form-group">
                     <select name="status" value={status} onChange={e => onChange(e)}>
                         <option value="0">* Select Professional Status</option>
@@ -158,5 +158,5 @@ CreateProfile.propTypes = {
 }
 
 
-export default connect(null, { createProfile })(withRouter(CreateProfile))
+export default connect(null, { createProfile })(CreateProfile)
 
