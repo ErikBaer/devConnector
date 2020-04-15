@@ -26,7 +26,7 @@ const Dashboard = ({
             <p className='lead'>
                 <i className='fas fa-user' /> Welcome {user && user.name}
             </p>
-            {profile !== null ? <Fragment>has profile </Fragment> : <Fragment>has no profile </Fragment>}
+            {profile !== null ? <Fragment> </Fragment> }
         </Fragment>
 };
 

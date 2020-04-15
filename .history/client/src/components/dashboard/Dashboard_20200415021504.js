@@ -8,26 +8,13 @@ import { getCurrentProfile } from '../../actions/profile';
 
 
 
-const Dashboard = ({
-    getCurrentProfile,
-    deleteAccount,
-    auth: { user },
-    profile: { profile, loading }
-}) => {
+const Dashboard = ({ getCurrentProfile, auth, profile: { profile, loading } }) => {
     useEffect(() => {
         getCurrentProfile();
-    }, [getCurrentProfile]);
-
-    return loading && profile === null ?
-        <Spinner />
-        :
+    }, []);
+    return loading && profile === null ? <Spinner /> :
         <Fragment>
-            <h1 className='large text-primary'>Dashboard</h1>
-            <p className='lead'>
-                <i className='fas fa-user' /> Welcome {user && user.name}
-            </p>
-            {profile !== null ? <Fragment>has profile </Fragment> : <Fragment>has no profile </Fragment>}
-        </Fragment>
+            Test</Fragment>
 };
 
 Dashboard.propTypes = {

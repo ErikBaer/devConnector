@@ -26,19 +26,19 @@ const Dashboard = ({
             <p className='lead'>
                 <i className='fas fa-user' /> Welcome {user && user.name}
             </p>
-            {profile !== null ? <Fragment>has profile </Fragment> : <Fragment>has no profile </Fragment>}
+            {profile !== ? <Fragment> }
         </Fragment>
 };
 
 Dashboard.propTypes = {
-    getCurrentProfile: PropTypes.func.isRequired,
+                getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth,
+                auth: state.auth,
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
+export default connect(mapStateToProps, {getCurrentProfile})(Dashboard)
