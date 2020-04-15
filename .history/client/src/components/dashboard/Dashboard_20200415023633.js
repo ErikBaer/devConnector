@@ -1,5 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, Fragment } from 'react'
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
@@ -27,15 +26,12 @@ const Dashboard = ({
             <p className='lead'>
                 <i className='fas fa-user' /> Welcome {user && user.name}
             </p>
-            {profile !== null ?
-                <Fragment>has profile </Fragment>
-                :
-                <Fragment>
-                    <p>You have not yet setup a profile, please add some info</p>
-                    <Link to='/create-profile' className='btn btn-primary my-1'>
-                        Create Profile
-                    </Link>
-                </Fragment>}
+            {profile !== null ? <Fragment>has profile </Fragment> : <Fragment>
+                <p>You have not yet setup a profile, please add some info</p>
+                <Link to='/create-profile' className='btn btn-primary my-1'>
+                    Create Profile
+          </Link>
+            </Fragment>}
         </Fragment>
 };
 
