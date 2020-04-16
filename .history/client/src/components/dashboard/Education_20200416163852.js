@@ -21,9 +21,7 @@ const Education = ({ education, deleteEducation }) => {
             <td>
                 <button
                     className="btn btn-danger"
-                    onClick={() => {
-                        deleteEducation(edu._id)
-                    }}
+                    onClick= ()
                 >
                     Delete
         </button>
@@ -31,22 +29,22 @@ const Education = ({ education, deleteEducation }) => {
         </tr >
     ));
 
-    return (
-        <Fragment>
-            <h2 className="my-2">Education Credentials</h2>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>School</th>
-                        <th className="hide-sm">Title</th>
-                        <th className="hide-sm">Years</th>
-                        <th />
-                    </tr>
-                </thead>
-                <tbody>{educations}</tbody>
-            </table>
-        </Fragment>
-    );
+return (
+    <Fragment>
+        <h2 className="my-2">Education Credentials</h2>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th>School</th>
+                    <th className="hide-sm">Title</th>
+                    <th className="hide-sm">Years</th>
+                    <th />
+                </tr>
+            </thead>
+            <tbody>{educations}</tbody>
+        </table>
+    </Fragment>
+);
 };
 
 Education.propTypes = {

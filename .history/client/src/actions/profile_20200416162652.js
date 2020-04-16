@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE, ACCOUNT_DELETED } from './types';
+import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
 
 //Get current Users Profile
 
@@ -136,10 +136,7 @@ export const deleteExperience = id => async dispatch => {
 
         dispatch(setAlert('Experience removed', 'success'))
     } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        })
+
     }
 }
 
@@ -156,10 +153,7 @@ export const deleteEducation = id => async dispatch => {
 
         dispatch(setAlert('Education removed', 'success'))
     } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        })
+
     }
 }
 
@@ -173,12 +167,9 @@ export const deleteAccount = () => async dispatch => {
             dispatch({ type: CLEAR_PROFILE });
             dispatch({ type: ACCOUNT_DELETED });
 
-            dispatch(setAlert('Your account has been permanently deleted'))
+            dispatch(setAlert('Education removed', 'success'))
         } catch (err) {
-            dispatch({
-                type: PROFILE_ERROR,
-                payload: { msg: err.response.statusText, status: err.response.status }
-            })
+
         }
     }
 
