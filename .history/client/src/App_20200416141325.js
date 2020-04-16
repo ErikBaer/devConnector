@@ -42,7 +42,6 @@ const App = () => {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/create-profile" component={ProfileForm} />
               <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
-              <PrivateRoute exact path="/experience" component={AddExperience} />
             </Switch>
           </section>
         </Fragment>
