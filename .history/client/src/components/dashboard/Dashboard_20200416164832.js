@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import { getCurrentProfile } from '../../actions/profile';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
@@ -37,7 +37,7 @@ const Dashboard = ({
                     <Education education={profile.education} />
 
                     <div className="my-2">
-                        <button className='button btn btn-danger' onClick={deleteAccount}>
+                        <button className='button btn btn-danger' onClick>
                             <i className='fas fa_user-minus'></i> Delete My Account
                         </button>
                     </div>
@@ -54,7 +54,6 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
-    deleteAccount: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 };
@@ -64,4 +63,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard)
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
