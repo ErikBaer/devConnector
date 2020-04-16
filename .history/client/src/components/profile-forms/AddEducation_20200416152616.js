@@ -65,18 +65,18 @@ const AddEducation = ({ addEducation, history }) => {
                         name="description"
                         cols="30"
                         rows="5"
-                        placeholder="Program Description" value={description} onChange={e => onChange(e)}
+                        placeholder="Job Description" value={description} onChange={e => onChange(e)}
                     ></textarea>
                 </div>
                 <input type="submit" class="btn btn-primary my-1" />
-                <a class="btn btn-light my-1" href="dashboard">Go Back</a>
+                <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
             </form>
         </Fragment>
     )
 }
 
-AddEducation.propTypes = {
-    addEducation: PropTypes.func.isRequired
+AddExperience.propTypes = {
+
 }
 
-export default connect(null, { addEducation })(AddEducation)
+export default connect(null, { addExperience })(AddExperience)
