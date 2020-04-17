@@ -33,7 +33,6 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
                 )}
             <div className='profile-grid my-1'>
                 <ProfileTop profile={profile} />
-                <ProfileAbout profile={profile} />
             </div>
         </Fragment>}
     </Fragment>
