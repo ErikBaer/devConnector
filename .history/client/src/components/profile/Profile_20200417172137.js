@@ -6,9 +6,6 @@ import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout'
-import ProfileExperience from './ProfileExperience'
-import ProfileEducation from './ProfileEducation'
-import ProfileGithub from './ProfileGithub'
 
 
 
@@ -39,30 +36,14 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
                 <ProfileAbout profile={profile} />
                 <div className='profile-exp bg-white p-2'>
                     <div className='text-primary'>Experience</div>
-                    {profile.experience.length > 0 ? (
-                        <Fragment>
-                            {profile.experience.map(experience => (
-                                <ProfileExperience key={experience._id} experience={experience} />
-                            ))}
-                        </Fragment>) : (<h4>No Experience added </h4>)}
+                    {profile.experience.length > 0 ? (<Fragment>
+                        {profile.experience.map(experience)}
+                    </Fragment>) : (<h4>No experience Credentials </h4>)}
                 </div>
-                <div className='profile-edu bg-white p-2'>
-                    <div className='text-primary'>Education</div>
-                    {profile.education.length > 0 ? (
-                        <Fragment>
-                            {profile.education.map(education => (
-                                <ProfileEducation key={education._id} education={education} />
-                            ))}
-                        </Fragment>) : (<h4>No Education added </h4>)}
-                </div>
-
-                {profile.githubusername && (
-                    <ProfileGithub username={profile.githubusername} />
-                )}
             </div>
         </Fragment>
         }
-    </Fragment>
+    </Fragment >
 }
 
 Profile.propTypes = {

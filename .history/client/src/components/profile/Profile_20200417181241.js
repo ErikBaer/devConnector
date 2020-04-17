@@ -56,8 +56,8 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
                         </Fragment>) : (<h4>No Education added </h4>)}
                 </div>
 
-                {profile.githubusername && (
-                    <ProfileGithub username={profile.githubusername} />
+                {profile.github.username && (
+                    <ProfileGithub username={profile.github.username} />
                 )}
             </div>
         </Fragment>
