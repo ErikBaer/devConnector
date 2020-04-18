@@ -39,8 +39,6 @@ export const addLike = postId => async dispatch => {
     }
 }
 
-//Remove Likes
-
 export const removeLike = postId => async dispatch => {
     try {
         const res = await axios.put(`/api/posts/unlike/${postId}`);
@@ -57,3 +55,4 @@ export const removeLike = postId => async dispatch => {
     }
 }
 
+//Remove Likes

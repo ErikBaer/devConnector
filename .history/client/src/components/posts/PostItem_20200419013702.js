@@ -23,13 +23,13 @@ const PostItem = ({ addLike, removeLike, auth, post: { _id, text, name, avatar, 
         <p class="post-date">
             Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
         </p>
-        <button onClick={() => addLike(_id)} type="button" class="btn btn-light">
+        <button onClick={addLike(_id)} type="button" class="btn btn-light">
             <i class="fas fa-thumbs-up"></i>{' '}
             {likes.length > 0 && (
                 <span>{likes.length}</span>
             )}
         </button>
-        <button onClick={() => removeLike(_id)} type="button" class="btn btn-light">
+        <button onClick={removeLike(_id)} type="button" class="btn btn-light">
             <i class="fas fa-thumbs-down"></i>
         </button>
         <Link to={`/post/${_id}`} class="btn btn-primary">

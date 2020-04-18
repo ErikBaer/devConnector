@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert'
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types'
+import { GET_POSTS, POST_ERROR } from './types'
 
 
 
@@ -23,13 +23,13 @@ export const getPosts = () => async dispatch => {
 //Add Like
 
 
-export const addLike = postId => async dispatch => {
+export const addLike = id => async dispatch => {
     try {
-        const res = await axios.put(`/api/posts/like/${postId}`);
+        const res = await axios.put(`/api/post/${id}`);
 
         dispatch({
             type: UPDATE_LIKES,
-            payload: { postId, likes: res.data }
+            payload: res.data
         })
     } catch (err) {
         dispatch({
@@ -38,22 +38,3 @@ export const addLike = postId => async dispatch => {
         });
     }
 }
-
-//Remove Likes
-
-export const removeLike = postId => async dispatch => {
-    try {
-        const res = await axios.put(`/api/posts/unlike/${postId}`);
-
-        dispatch({
-            type: UPDATE_LIKES,
-            payload: { postId, likes: res.data }
-        })
-    } catch (err) {
-        dispatch({
-            type: POST_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-}
-

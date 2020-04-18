@@ -29,7 +29,7 @@ export const addLike = postId => async dispatch => {
 
         dispatch({
             type: UPDATE_LIKES,
-            payload: { postId, likes: res.data }
+            payload: { id, likes }
         })
     } catch (err) {
         dispatch({
@@ -38,22 +38,3 @@ export const addLike = postId => async dispatch => {
         });
     }
 }
-
-//Remove Likes
-
-export const removeLike = postId => async dispatch => {
-    try {
-        const res = await axios.put(`/api/posts/unlike/${postId}`);
-
-        dispatch({
-            type: UPDATE_LIKES,
-            payload: { postId, likes: res.data }
-        })
-    } catch (err) {
-        dispatch({
-            type: POST_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-}
-
