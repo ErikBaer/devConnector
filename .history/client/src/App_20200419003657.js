@@ -50,7 +50,6 @@ const App = () => {
               <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
               <PrivateRoute exact path="/experience" component={AddExperience} />
               <PrivateRoute exact path="/education" component={AddEducation} />
-              <PrivateRoute exact path="/posts" component={Posts} />
             </Switch>
           </section>
         </Fragment>

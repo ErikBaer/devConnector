@@ -18,13 +18,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 posts: payload,
-                loading: false
+                laoding: false
             }
         case POST_ERROR:
             return {
                 ...state,
                 error: payload,
-                loading: false
+                laoding: false
             }
 
         default:
