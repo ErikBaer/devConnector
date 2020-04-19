@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://admin:Password@devconnector-cluster-lh4t8.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "Thisismysecret",
+    "githubToken": "e4de7a9221731de35ad319507d854c2bcc339c0a"
+}

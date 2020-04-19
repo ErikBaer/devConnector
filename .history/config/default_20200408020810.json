@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://admin:Password@devconnector-cluster-lh4t8.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "Thisismysecret",
+  "githubClientId": "Iv1.2ecf6dc46c64ef56",
+  "githubSecret": ""
+}
