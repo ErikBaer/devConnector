@@ -23,8 +23,7 @@ export default function (state = initialState, action) {
         case DELETE_POST:
             return {
                 ...state,
-                posts: state.posts.filter(post => payload !== post._id),
-                loading: false
+                posts: posts.map(post => { })
             }
         case POST_ERROR:
             return {

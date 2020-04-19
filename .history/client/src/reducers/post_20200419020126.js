@@ -20,12 +20,6 @@ export default function (state = initialState, action) {
                 posts: payload,
                 loading: false
             }
-        case DELETE_POST:
-            return {
-                ...state,
-                posts: state.posts.filter(post => payload !== post._id),
-                loading: false
-            }
         case POST_ERROR:
             return {
                 ...state,
