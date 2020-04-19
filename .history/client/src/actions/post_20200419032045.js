@@ -88,7 +88,7 @@ export const addPost = formData => async dispatch => {
         headers: {
             'Content-Type': 'application/json'
         }
-    }
+    };
 
     try {
         const res = await axios.post('/api/posts', formData, config);
@@ -96,15 +96,13 @@ export const addPost = formData => async dispatch => {
         dispatch({
             type: ADD_POST,
             payload: res.data
-        })
+        });
 
-        dispatch(
-            setAlert('Post created', 'success')
-        )
+        dispatch(setAlert('Post Created', 'success'));
     } catch (err) {
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
-}
+};

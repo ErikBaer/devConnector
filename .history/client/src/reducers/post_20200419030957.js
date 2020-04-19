@@ -1,6 +1,6 @@
 import {
     GET_POSTS,
-    POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST
+    POST_ERROR, UPDATE_LIKES, DELETE_POST
 } from '../actions/types';
 
 const initialState = {
@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
         case ADD_POST:
             return {
                 ...state,
-                posts: [payload, ...state.posts],
+                posts: [...state.posts, payload],
                 loading: false
             }
 
