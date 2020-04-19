@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import Spinner from '../layout/Spinner'
 import { getPost } from '../../actions/post'
 import PostItem from '../posts/PostItem'
-import CommentForm from './CommentForm'
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
     useEffect(() => {
@@ -19,17 +18,17 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
                 Back to Posts
             </Link>
             <PostItem post={post} showActions={false} ></PostItem>
-            <CommentForm postId={post._id} />
+            <CommentForm postId
         </Fragment>
 }
 
 Post.propTypes = {
-    getPost: PropTypes.func.isRequired,
+                getPost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    post: state.post
+                post: state.post
 })
 
-export default connect(mapStateToProps, { getPost })(Post)
+export default connect(mapStateToProps, {getPost})(Post)

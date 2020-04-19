@@ -130,7 +130,7 @@ export const getPost = id => async dispatch => {
 
 //Add Comments
 
-export const addComment = (postId, formData) => async dispatch => {
+export const addComments = (postId, formData) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -147,29 +147,6 @@ export const addComment = (postId, formData) => async dispatch => {
 
         dispatch(
             setAlert('Comment added', 'success')
-        )
-    } catch (err) {
-        dispatch({
-            type: POST_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-}
-
-//Delete Comments
-
-export const removeComment = (postId, commentId) => async dispatch => {
-
-    try {
-        const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
-
-        dispatch({
-            type: REMOVE_COMMENT,
-            payload: { commentId }
-        })
-
-        dispatch(
-            setAlert('Comment removed', 'success')
         )
     } catch (err) {
         dispatch({
