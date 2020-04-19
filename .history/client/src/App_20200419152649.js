@@ -52,12 +52,13 @@ const App = () => {
               <PrivateRoute exact path="/experience" component={AddExperience} />
               <PrivateRoute exact path="/education" component={AddEducation} />
               <PrivateRoute exact path="/posts" component={Posts} />
-              <PrivateRoute exact path="/posts/:id" component={Post} />
+              <PrivateRoute exact path="/posts/:id" component={Posts} />
+            </Switch>
             </Switch>
           </section>
         </Fragment>
       </Router>
-    </Provider>
+    </Provider >
   )
 }
 

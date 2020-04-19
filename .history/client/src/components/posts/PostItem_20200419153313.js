@@ -24,40 +24,34 @@ const PostItem = ({ addLike, removeLike, deletePost, auth, post: { _id, text, na
             Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
         </p>
 
-        {showActions && <Fragment>
-            <button onClick={() => addLike(_id)} type="button" class="btn btn-light">
-                <i class="fas fa-thumbs-up"></i>{' '}
-                {likes.length > 0 && (
-                    <span>{likes.length}</span>
-                )}
-            </button>
-            <button onClick={() => removeLike(_id)} type="button" class="btn btn-light">
-                <i class="fas fa-thumbs-down"></i>
-            </button>
-            <Link to={`/posts/${_id}`} class="btn btn-primary">
-                Discussion {comments.length > 0 && (
-                    <span class='comment-count'>{comments.length}</span>
-                )}
-            </Link>
-            {!auth.loading && user === auth.user._id && (
-                <button
-                    onClick={() => deletePost(_id)}
-                    type="button"
-                    class="btn btn-danger"
-                >
-                    <i class="fas fa-times"></i>
-                </button>
+
+
+        <button onClick={() => addLike(_id)} type="button" class="btn btn-light">
+            <i class="fas fa-thumbs-up"></i>{' '}
+            {likes.length > 0 && (
+                <span>{likes.length}</span>
             )}
-        </Fragment>}
-
-
+        </button>
+        <button onClick={() => removeLike(_id)} type="button" class="btn btn-light">
+            <i class="fas fa-thumbs-down"></i>
+        </button>
+        <Link to={`/posts/${_id}`} class="btn btn-primary">
+            Discussion {comments.length > 0 && (
+                <span class='comment-count'>{comments.length}</span>
+            )}
+        </Link>
+        {!auth.loading && user === auth.user._id && (
+            <button
+                onClick={() => deletePost(_id)}
+                type="button"
+                class="btn btn-danger"
+            >
+                <i class="fas fa-times"></i>
+            </button>
+        )}
 
     </div>
 </div>
-
-PostItem.defaultProps = {
-    showActions: true
-}
 
 PostItem.propTypes = {
     auth: PropTypes.object.isRequired,

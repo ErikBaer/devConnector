@@ -57,7 +57,7 @@ const App = () => {
           </section>
         </Fragment>
       </Router>
-    </Provider>
+    </Provider >
   )
 }
 

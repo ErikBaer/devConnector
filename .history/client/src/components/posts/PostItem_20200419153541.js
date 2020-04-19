@@ -55,10 +55,6 @@ const PostItem = ({ addLike, removeLike, deletePost, auth, post: { _id, text, na
     </div>
 </div>
 
-PostItem.defaultProps = {
-    showActions: true
-}
-
 PostItem.propTypes = {
     auth: PropTypes.object.isRequired,
     post: PropTypes.object.isRequired,
