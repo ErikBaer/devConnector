@@ -15,7 +15,6 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
-import Routes from './components/routing/Routes';
 import ProfileForm from './components/profile-forms/ProfileForm';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
@@ -23,7 +22,6 @@ import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts'
 import Post from './components/post/Post'
-
 
 
 
@@ -40,6 +38,7 @@ const App = () => {
       <Router>
         <Fragment >
           <Navbar />
+          <Route exact path="/" component={Landing} />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route component={Routes} />

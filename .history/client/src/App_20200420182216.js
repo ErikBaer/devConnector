@@ -40,6 +40,7 @@ const App = () => {
       <Router>
         <Fragment >
           <Navbar />
+          <Route exact path="/" component={Landing} />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route component={Routes} />
