@@ -9,7 +9,7 @@ const PostItem = ({ addLike, removeLike, deletePost, auth, post: { _id, text, na
     <div>
         <Link to={`/profile/${user}`}>
             <img
-                className="round-img"
+                classNameName="round-img"
                 src={avatar}
                 alt=""
             />

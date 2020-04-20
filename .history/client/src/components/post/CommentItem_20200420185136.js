@@ -31,13 +31,13 @@ const CommentItem = ({
                 <Moment format='DD/MM/YYYY' >{date}</Moment>
             </p>
             {!auth.loading && user === auth.user._id && (
-                <button onClick={e => deleteComment(postId, _id)} type="button" className='btn btn-danger'><i className='fas fa-times'></i></button>
+                <button onClick={e => deleteComment(postId, _id)} type="button" classNameName='btn btn-danger'><i classNameName='fas fa-times'></i></button>
             )}
         </div>
     </div>
 
 CommentItem.propTypes = {
-    postId: PropTypes.string.isRequired,
+    postId: PropTypes.number.isRequired,
     auth: PropTypes.object.isRequired,
     comment: PropTypes.object.isRequired,
     deleteComment: PropTypes.func.isRequired,
