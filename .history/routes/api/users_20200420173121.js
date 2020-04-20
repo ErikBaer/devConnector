@@ -57,7 +57,7 @@ router.post(
       // Get user gravatar
 
       const avatar = normalize(
-        `www.robohash.org/${name}`, {
+        `www.robohash.org/erik`, {
         forceHttps: true,
       }
       );
