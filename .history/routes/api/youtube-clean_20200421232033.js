@@ -111,7 +111,7 @@ router.get('/', async (req, res) => {
             service.channels.list({
                 auth: auth,
                 part: 'snippet,contentDetails,statistics',
-                forUsername: 'Gentleman'
+                forUsername: 'GoogleDevelopers'
             }, function (err, response) {
                 if (err) {
                     console.log('The API returned an error: ' + err);
@@ -130,25 +130,14 @@ router.get('/', async (req, res) => {
                     data = [];
                     channels.forEach(channel => {
                         data.push({
-                            general: {
-                                id: channel.id,
-                                etag: channel.etag,
-                                title: channel.snippet.title,
-                                description: channel.snippet.description,
-                                customUrl: channel.customUrl,
-                                publishedAt: channel.publishedAt,
-                                country: channel.snippet.country
-                            },
-
+                            id: channel.id,
+                            title: channel.snippet.title,
+                            description: channel.snippet.description,
+                            customUrl: channel.customUrl,
+                            publishedAt: channel.publishedAt,
                             thumbnails: {
-                                default: channel.snippet.thumbnails.default,
-                                medium: channel.snippet.thumbnails.medium,
-                                high: channel.snippet.thumbnails.high
-                            },
 
-                            statistics: channel.statistics
-
-
+                            }
                         })
                         console.log(channel.id)
                     })

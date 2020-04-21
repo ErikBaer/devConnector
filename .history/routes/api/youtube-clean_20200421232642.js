@@ -111,7 +111,7 @@ router.get('/', async (req, res) => {
             service.channels.list({
                 auth: auth,
                 part: 'snippet,contentDetails,statistics',
-                forUsername: 'Gentleman'
+                forUsername: 'GoogleDevelopers'
             }, function (err, response) {
                 if (err) {
                     console.log('The API returned an error: ' + err);
