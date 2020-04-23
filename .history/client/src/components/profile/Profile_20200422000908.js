@@ -8,7 +8,8 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout'
 import ProfileExperience from './ProfileExperience'
 import ProfileEducation from './ProfileEducation'
-import ProfileYoutube from './ProfileYoutube'
+import ProfileGithub from './ProfileGithub'
+import { getYoutubeData } from '../../actions/youtube';
 
 
 
@@ -20,8 +21,10 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
   */
     const nullProfile = !profile;
     useEffect(() => {
-        getProfileById(match.params.id);
+        getProfileById(match.params.id),
+            getYoutubeData()
     }, [getProfileById, match.params.id, nullProfile]);
+
 
 
     return <Fragment>
@@ -56,10 +59,9 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
                         </Fragment>) : (<h4>No Education added </h4>)}
                 </div>
 
-                <Fragment>
-                    <ProfileYoutube />
-                </Fragment>
-
+                {profile.githubusername && (
+                    <ProfileGithub username={profile.githubusername} />
+                )}
             </div>
         </Fragment>
         }
@@ -68,6 +70,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
 
 Profile.propTypes = {
     getProfileById: PropTypes.func.isRequired,
+    getYoutubeData: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
 }
@@ -77,4 +80,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { getProfileById })(Profile)
+export default connect(mapStateToProps, { getProfileById, getYoutubeData })(Profile)
