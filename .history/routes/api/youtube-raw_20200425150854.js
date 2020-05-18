@@ -131,9 +131,10 @@ router.get('/', async (req, res) => {
 
 
                 }
-                res.json(channels[0])
+
             });
-            // const playlistId = channels[0].contentDetails.relatedPlaylists.uploads
+            res.json(channels[0])
+            const playlistId = channels[0].contentDetails.relatedPlaylists.uploads
             console.log(playlistId)
 
             // service.playlists.list({

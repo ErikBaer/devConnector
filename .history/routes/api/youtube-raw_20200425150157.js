@@ -7,8 +7,6 @@ var OAuth2 = google.auth.OAuth2;
 const auth = require('../../middleware/auth');
 
 router.get('/', async (req, res) => {
-    var channels = []
-    var playlistId = ''
 
     try {
         // If modifying these scopes, delete your previously saved credentials
@@ -119,7 +117,7 @@ router.get('/', async (req, res) => {
                     console.log('The API returned an error: ' + err);
                     return;
                 }
-                channels = response.data.items;
+                var channels = response.data.items;
                 if (channels.length == 0) {
                     console.log('No channel found.');
                 } else {
@@ -132,39 +130,40 @@ router.get('/', async (req, res) => {
 
                 }
                 res.json(channels[0])
-            });
-            // const playlistId = channels[0].contentDetails.relatedPlaylists.uploads
-            console.log(playlistId)
+                const playlistId = channels[0].contentDetails.relatedPlaylists.uploads
+                console.log(playlistId)
 
-            // service.playlists.list({
-            //     auth: auth,
-            //     part: 'snippet',
-            //     forUsername: 'GoogleDevelopers',
-            //     id: playlistId
-            // }, function (err, response) {
-            //     if (err) {
-            //         console.log('The API returned an error: ' + err);
-            //         return;
-            //     }
-            //     var playlistItems = response.data.items;
-            //     if (plalistItems.length == 0) {
-            //         console.log('No Videos found.');
-            //     } else {
-            //         console.log('PlaylistInfo fetched');
-
-
-            //     }
+                service.playlists.list({
+                    auth: auth,
+                    part: 'snippet',
+                    forUsername: 'GoogleDevelopers',
+                    id: playlistId
+                }, function (err, response) {
+                    if (err) {
+                        console.log('The API returned an error: ' + err);
+                        return;
+                    }
+                    var playlistItems = response.data.items;
+                    if (plalistItems.length == 0) {
+                        console.log('No Videos found.');
+                    } else {
+                        console.log('PlaylistInfo fetched');
 
 
-        }
+                    }
+
+                });
+
+
+            }
 
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+
     }
-
-
-}
 )
 
 module.exports = router;

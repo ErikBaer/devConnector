@@ -7,8 +7,6 @@ var OAuth2 = google.auth.OAuth2;
 const auth = require('../../middleware/auth');
 
 router.get('/', async (req, res) => {
-    var channels = []
-    var playlistId = ''
 
     try {
         // If modifying these scopes, delete your previously saved credentials
@@ -119,7 +117,7 @@ router.get('/', async (req, res) => {
                     console.log('The API returned an error: ' + err);
                     return;
                 }
-                channels = response.data.items;
+                var channels = response.data.items;
                 if (channels.length == 0) {
                     console.log('No channel found.');
                 } else {
@@ -131,9 +129,10 @@ router.get('/', async (req, res) => {
 
 
                 }
-                res.json(channels[0])
+
             });
-            // const playlistId = channels[0].contentDetails.relatedPlaylists.uploads
+            res.json(channels[0])
+            const playlistId = channels[0].contentDetails.relatedPlaylists.uploads
             console.log(playlistId)
 
             // service.playlists.list({
