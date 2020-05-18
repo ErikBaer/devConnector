@@ -20,7 +20,7 @@ const ProfileExperience = ({ experience: { company, title, location, current, to
 
 
 ProfileExperience.propTypes = {
-    experience: PropTypes.object.isRequired,
+    experience: PropTypes.array.isRequired,
 
 }
 
